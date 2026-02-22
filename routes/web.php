@@ -6,8 +6,8 @@ use App\Http\Controllers\CategoriaController;
 
 
 Route::get('/', [ProjectController::class, 'index']);
-Route::get('/about', [ProjectController::class, 'about']);
-Route::get('/categorias', [CategoriaController::class, 'index']);
+Route::get('/inicio', [ProjectController::class, 'inicio']);
+Route::get('/layout', [CategoriaController::class, 'main']);
 
 Route::get('/teste', function () {
     return view('teste');

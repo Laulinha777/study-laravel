@@ -18,7 +18,7 @@ class ProjectController extends Controller
     ]);
     }
 
-    public function about(){
-        return view('about');
+    public function inicio(){
+        return view('inicio');
     }
 }
