@@ -1,13 +1,18 @@
 <?php
 
+use App\Http\Controllers\AprendizadoController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProjectController;
-use App\Http\Controllers\CategoriaController;
 
+Route::get('/inicio', [AprendizadoController::class, 'index']);
 
-Route::get('/', [ProjectController::class, 'index']);
-Route::get('/inicio', [ProjectController::class, 'inicio']);
-Route::get('/layout', [CategoriaController::class, 'main']);
+Route::get('/criar', [AprendizadoController::class, 'create'])
+    ->name('criar.form');
+
+Route::post('/criar', [AprendizadoController::class, 'store'])
+    ->name('criar.store');
+    
+Route::post('/criar', [AprendizadoController::class, 'store'])
+    ->name('criar.store');
 
 Route::get('/teste', function () {
     return view('teste');

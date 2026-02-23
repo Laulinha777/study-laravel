@@ -4,15 +4,22 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Aprendizados;
+use App\Models\Fontes;
+use App\Models\Area;
 
-class AprendizadosController extends Controller
+class AprendizadoController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+
+    $aprendizados = Aprendizados::with(['area', 'fonte'])->get();
+    return view('inicio', compact('aprendizados'));
+        // session()->flash("success","Cadastrado com Sucesso");
+        // return view('inicio');
     }
 
     /**
@@ -20,7 +27,9 @@ class AprendizadosController extends Controller
      */
     public function create()
     {
-        //
+        $areas = Area::all();
+        $fontes = Fontes::all();
+        return view('aprendizado.criar', compact('areas', 'fontes'));
     }
 
     /**
@@ -28,7 +37,9 @@ class AprendizadosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request->all());
+     Aprendizados::create($request->all());
+     return redirect('/inicio')->with('success', 'Salvo com sucesso!');
     }
 
     /**
