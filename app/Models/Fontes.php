@@ -8,9 +8,10 @@ class Fontes extends Model
 {
     protected $table = 'fonte';
     protected $filable = ['nome_fonte'];
+    protected $primaryKey = 'id_fonte';
     public $timestamps = 'false';
 
     public function aprendizados(){
-        return $this->hasMany(Aprendizados::class, 'id_fonte_fk');
+        return $this->hasMany(Aprendizados::class, 'id_fonte_fk', 'id_fonte');
     }
 }

@@ -55,7 +55,10 @@ class AprendizadoController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $aprendizado = Aprendizados::findOrFail($id);
+        $areas = Area::all();
+        $fontes = Fontes::all();
+        return view('aprendizado.editar', compact('aprendizado', 'areas', 'fontes'));
     }
 
     /**
@@ -63,7 +66,8 @@ class AprendizadoController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        Aprendizados::findOrFail($id)->update($request->all());
+        return redirect('/')->with('success', 'Atualizado com sucesso!');
     }
 
     /**
@@ -71,6 +75,7 @@ class AprendizadoController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Aprendizados::findOrFail($id)->delete();
+        return redirect('/')->with('success', 'Excluído com sucesso!');
     }
 }
